@@ -1,0 +1,21 @@
+[package]
+name = "migratable-procedural"
+version = "0.0.1"
+authors = ["José Molina <jose.molina@parity.io>"]
+edition = "2021"
+license = "Unlicensed"
+homepage = "https://substrate.io"
+repository = "https://github.com/Moliholy/pallet-migration"
+description = "FRAME pallet for performing storage migrations in Substrate pallets"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = { version = "2.0", features = ["full"] }
+proc-macro2 = "1.0.64"
+quote = "1.0.33"
+sp-std = { default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v1.0.0" }

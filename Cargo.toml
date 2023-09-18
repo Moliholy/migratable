@@ -1,0 +1,36 @@
+[package]
+name = "migratable"
+version = "0.0.1"
+authors = ["José Molina <jose.molina@parity.io>"]
+edition = "2021"
+license = "Unlicensed"
+homepage = "https://substrate.io"
+repository = "https://github.com/Moliholy/migratable"
+description = "Library for performing storage migrations in Substrate pallets"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+log = "0.4"
+parity-scale-codec = { version = "3.6", default-features = false, features = ["derive", "max-encoded-len"] }
+migratable-procedural = { path = "./procedural", default-features = false }
+frame-support = { default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v1.0.0" }
+frame-system = { default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v1.0.0" }
+sp-std = { default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v1.0.0" }
+sp-runtime = { default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v1.0.0" }
+impl-trait-for-tuples = "0.2"
+
+[features]
+default = ["std"]
+std = [
+	"parity-scale-codec/std",
+	"frame-support/std",
+	"frame-system/std",
+	"sp-runtime/std",
+]
+runtime-benchmarks = [
+	"frame-support/runtime-benchmarks",
+	"frame-system/runtime-benchmarks",
+]
+try-runtime = ["frame-support/try-runtime"]
